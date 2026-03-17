@@ -92,7 +92,7 @@ BEGIN
     WHERE product_id = NEW.product_id;
     
     IF (SELECT stock_qty FROM product WHERE product_id = NEW.product_id) < 0 THEN
-        RAISE EXCEPTION 'Sản phẩm ID % đã hết hàng!', NEW.product_id;
+        RAISE EXCEPTION 'Product ID % is out of stock!', NEW.product_id;
     END IF;
     
     RETURN NEW;
