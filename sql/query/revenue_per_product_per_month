@@ -1,0 +1,8 @@
+EXPLAIN (ANALYZE, FORMAT JSON)
+SELECT 
+    product_id,
+    DATE_TRUNC('month', order_date) AS month,
+    SUM(subtotal) AS revenue
+FROM order_item
+GROUP BY product_id, DATE_TRUNC('month', order_date)
+ORDER BY product_id, DATE_TRUNC('month', order_date);

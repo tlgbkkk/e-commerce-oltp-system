@@ -1,0 +1,8 @@
+EXPLAIN (ANALYZE, FORMAT JSON)
+SELECT 
+    o.seller_id, 
+    SUM(oi.quantity) AS total_products_sold
+FROM "order" o
+JOIN order_item oi ON o.order_id = oi.order_id
+GROUP BY o.seller_id
+ORDER BY total_products_sold DESC;

@@ -1,0 +1,5 @@
+EXPLAIN (ANALYZE, FORMAT JSON)
+SELECT * FROM "order"
+WHERE seller_id = 10 
+  AND order_date BETWEEN '2025-09-01' AND '2025-09-30'
+ORDER BY order_date DESC;

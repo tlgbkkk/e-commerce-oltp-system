@@ -1,0 +1,9 @@
+EXPLAIN (ANALYZE, FORMAT JSON)
+SELECT 
+    seller_id, 
+    COUNT(*) AS order_count,
+    SUM(total_amount) AS monthly_revenue
+FROM "order"
+WHERE order_date >= '2025-10-01' AND order_date < '2025-11-01'
+GROUP BY seller_id
+ORDER BY order_count DESC;

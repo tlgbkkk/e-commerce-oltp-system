@@ -1,0 +1,7 @@
+EXPLAIN (ANALYZE, FORMAT JSON)
+SELECT 
+    DATE_TRUNC('month', order_date) AS order_month,
+    SUM(total_amount) AS total_revenue
+FROM "order"
+GROUP BY order_month
+ORDER BY order_month;

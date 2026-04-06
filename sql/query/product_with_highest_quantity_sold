@@ -1,0 +1,10 @@
+EXPLAIN (ANALYZE, FORMAT JSON)
+SELECT 
+    oi.product_id, 
+    p.product_name, 
+    SUM(oi.quantity) AS total_qty
+FROM order_item oi
+JOIN product p ON oi.product_id = p.product_id
+GROUP BY oi.product_id, p.product_name
+ORDER BY total_qty DESC
+LIMIT 1;
